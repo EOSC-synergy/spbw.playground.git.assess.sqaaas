@@ -1,0 +1,74 @@
+config:
+  credentials: []
+  project_repos:
+    github.com/EOSC-synergy/sqaaas-tooling:
+      branch: fix/updatego
+      repo: https://github.com/EOSC-synergy/sqaaas-tooling
+    github.com/john-shepherdson/spbw.playground:
+      branch: main
+      repo: https://github.com/john-shepherdson/spbw.playground.git
+environment:
+  JPL_DOCKERFORCEBUILD: enabled
+  JPL_KEEPGOING: enabled
+sqa_criteria:
+  QC.Acc:
+    repos:
+      github.com/john-shepherdson/spbw.playground git:
+        commands:
+        - /usr/bin/env sh .sqa/script.rust_loyal_hedgehog.sh
+        container: qc.acc_periwinkle_loyal_caribou
+  QC.Doc:
+    repos:
+      github.com/john-shepherdson/spbw.playground find_doc_files.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.verdant_blissful_wolf.sh
+        container: qc.doc_fog_perceptive_warthog
+      github.com/john-shepherdson/spbw.playground git:
+        commands:
+        - /usr/bin/env sh .sqa/script.steel_shy_orangutan.sh
+        container: qc.doc_powder_creative_tarantula
+      github.com/john-shepherdson/spbw.playground markdownlint:
+        commands:
+        - /usr/bin/env sh .sqa/script.pistachio_unique_frog.sh
+        container: qc.doc_cinnabar_amiable_cobra
+  QC.Lic:
+    repos:
+      github.com/john-shepherdson/spbw.playground licensee:
+        commands:
+        - /usr/bin/env sh .sqa/script.fern_restless_cockatoo.sh
+        container: qc.lic_avocado_dedicated_meerkat
+  QC.Met:
+    repos:
+      github.com/john-shepherdson/spbw.playground cff-converter-python:
+        commands:
+        - /usr/bin/env sh .sqa/script.harlequin_outgoing_griffin.sh
+        container: qc.met_cyan_adaptable_pangolin
+  QC.Sec:
+    repos:
+      github.com/john-shepherdson/spbw.playground bandit:
+        commands:
+        - /usr/bin/env sh .sqa/script.umber_stoic_rattlesnake.sh
+        container: qc.sec_daffodil_agile_boa
+  QC.Sty:
+    repos:
+      github.com/john-shepherdson/spbw.playground flake8:
+        commands:
+        - /usr/bin/env sh .sqa/script.coral_observant_orca.sh
+        container: qc.sty_linen_reckless_gazelle
+      github.com/john-shepherdson/spbw.playground jsonlint:
+        commands:
+        - /usr/bin/env sh .sqa/script.pineapple_mischievous_wolverine.sh
+        container: qc.sty_malachite_whimsical_uakari
+  QC.Uni:
+    repos:
+      github.com/john-shepherdson/spbw.playground pytest:
+        commands:
+        - /usr/bin/env sh .sqa/script.currant_vibrant_raven.sh
+        container: qc.uni_chartreuse_scrappy_tiger
+  QC.Ver:
+    repos:
+      github.com/john-shepherdson/spbw.playground get_git_tags.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.rust_amiable_lynx.sh
+        container: qc.ver_tangerine_devoted_tortoise
+timeout: 5400
